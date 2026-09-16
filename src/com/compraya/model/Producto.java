@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Clase base Producto que representa un artículo general en el catálogo de CompraYa.
- * Sirve como superclase para la especialización mediante herencia en ProductoFisico y ProductoDigital.
+ * Contiene la definición base del método mostrarDetalle() para ser sobrescrito por subclases (Sobreescritura - Overriding).
  */
 public class Producto {
     private int id;
@@ -39,11 +39,27 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // --- Métodos Polimórficos / Especializables ---
+    // --- Métodos Polimórficos / Sobreescritura (Overriding) ---
+
+    /**
+     * Muestra en pantalla la ficha técnica detallada del producto.
+     * Método base diseñado para ser sobrescrito por subclases (ProductoFisico, ProductoDigital).
+     */
+    public void mostrarDetalle() {
+        System.out.println("-------------------------------------------------------");
+        System.out.println(" FICHA TÉCNICA GENERAL DE PRODUCTO                     ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("ID:          " + id);
+        System.out.println("Nombre:      " + nombre);
+        System.out.println("Descripción: " + descripcion);
+        System.out.printf("Precio:      $%.2f\n", precio);
+        System.out.println("Stock:       " + stock + " unidades");
+        System.out.println("Categoría:   " + (categoria != null ? categoria.getNombre() : "Sin Categoría"));
+        System.out.println("Tipo:        Producto General (Catálogo)");
+    }
 
     /**
      * Retorna una descripción detallada con los atributos específicos del tipo de producto.
-     * Método diseñado para ser sobrescrito por subclases (Polimorfismo).
      * 
      * @return String con detalles específicos del producto.
      */
@@ -159,7 +175,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return String.format("Producto[ID: %d | Nombre: %s | Precio: $%.2f | Stock: %d | Categ: %s | Tipo: %s]",
-                id, nombre, precio, stock, (categoria != null ? categoria.getNombre() : "Sin Categoria"), obtenerDetallesEspecificos());
+        return String.format("Producto[ID: %d | Nombre: %s | Precio: $%.2f | Stock: %d | Categ: %s]",
+                id, nombre, precio, stock, (categoria != null ? categoria.getNombre() : "Sin Categoria"));
     }
 }

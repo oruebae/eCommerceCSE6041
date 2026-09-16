@@ -1,0 +1,158 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 4          
+         Demostración de Polimorfismo, Sobrecarga y Sobreescritura  
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+[CLIENTE Alberto López] Nueva preferencia agregada: Software y Libros Digitales
+[CLIENTE Alberto López] Nueva preferencia agregada: Electrónica
+
+====================================================================
+ 1. DEMOSTRACIÓN DE SOBREESCRITURA DE MÉTODOS (mostrarDetalle())  
+====================================================================
+Se invoca el método sobrescrito mostrarDetalle() en diferentes tipos de productos:
+-------------------------------------------------------
+ 📦 FICHA TÉCNICA DE PRODUCTO FÍSICO                   
+-------------------------------------------------------
+ID:            1
+Nombre:        Smartphone X Pro
+Descripción:   Teléfono 128GB OLED
+Precio:        $1500000,00
+Stock:         15 unidades
+Categoría:     Electrónica
+Peso Físico:   0,45 kg
+Dimensiones:   15x7x0.8 cm
+Flete Base:    $12000,00
+Flete Bogotá:  $12000,00
+Logística:     Requiere transporte terrestre/aéreo
+
+-------------------------------------------------------
+ 📦 FICHA TÉCNICA DE PRODUCTO FÍSICO                   
+-------------------------------------------------------
+ID:            2
+Nombre:        Cafetera Express
+Descripción:   Cafetera de presión 15 bares
+Precio:        $450000,00
+Stock:         10 unidades
+Categoría:     Hogar
+Peso Físico:   4,20 kg
+Dimensiones:   35x25x30 cm
+Flete Base:    $18000,00
+Flete Bogotá:  $24600,00
+Logística:     Requiere transporte terrestre/aéreo
+
+-------------------------------------------------------
+ 💾 FICHA TÉCNICA DE PRODUCTO DIGITAL                  
+-------------------------------------------------------
+ID:            3
+Nombre:        Curso Java OOP Avanzado
+Descripción:   Masterclass interactiva POO 2026
+Precio:        $120000,00
+Stock:         999 licencias disponibles
+Categoría:     Software y Libros Digitales
+Formato:       MP4/ZIP
+Tamaño MB:     2450,0 MB
+Licencia:      LIC-JAVA-2026-BIU
+URL Base:      https://cdn.compraya.com/cursos/java-oop
+Entrega:       Inmediata vía enlace dinámico con token
+
+-------------------------------------------------------
+ 💾 FICHA TÉCNICA DE PRODUCTO DIGITAL                  
+-------------------------------------------------------
+ID:            4
+Nombre:        E-Book Arquitectura Software
+Descripción:   Guía práctica de patrones de diseño
+Precio:        $45000,00
+Stock:         999 licencias disponibles
+Categoría:     Software y Libros Digitales
+Formato:       PDF/EPUB
+Tamaño MB:     18,5 MB
+Licencia:      LIC-EBOOK-SINGLE
+URL Base:      https://cdn.compraya.com/ebooks/arch-design
+Entrega:       Inmediata vía enlace dinámico con token
+
+====================================================================
+ 2. DEMOSTRACIÓN DE SOBRECARGA DE MÉTODOS (agregarProducto())     
+====================================================================
+[VARIACIÓN 1 - Overloading] agregarProducto(Producto p)
+   -> ¿Agregado 1 unidad de 'Smartphone X Pro'?: true
+
+[VARIACIÓN 2 - Overloading] agregarProducto(Producto p, int cantidad)
+   -> ¿Agregadas 2 unidades de 'Curso Java OOP Avanzado'?: true
+
+[VARIACIÓN 3 - Overloading] agregarProducto(int productoId, EcommerceService service)
+   -> ¿Agregada 1 unidad por ID 2 (Cafetera Express)?: true
+
+[VARIACIÓN 4 - Overloading] agregarProducto(int productoId, int cantidad, EcommerceService service)
+   -> ¿Agregadas 3 unidades por ID 4 (E-Book)?: true
+
+[VARIACIÓN 5 - Overloading] agregarProducto(String nombre, double precio, int cantidad, Categoria cat)
+[CARRITO - SOBRECARGA] Generando e insertando producto dinámico: 'Soporte Ergonómico Laptop' ($85000,00) x1
+   -> ¿Agregado producto dinámico por nombre y precio?: true
+
+[ESTADO DEL CARRITO TRAS SOBRECARGA]
+=== Carrito de Compras (Total: $2410000,00) ===
+ - Smartphone X Pro x1 -> Subtotal: $1500000,00
+ - Curso Java OOP Avanzado x2 -> Subtotal: $240000,00
+ - Cafetera Express x1 -> Subtotal: $450000,00
+ - E-Book Arquitectura Software x3 -> Subtotal: $135000,00
+ - Soporte Ergonómico Laptop x1 -> Subtotal: $85000,00
+
+[DEMOSTRACIÓN SOBRECARGA - removerProducto]
+   * Removiendo por ID de producto (removerProducto(int id)...)
+   * Removiendo pasando objeto Producto (removerProducto(Producto p)...)
+
+[CARRITO TRAS REMOCIONES SOBRECARGADAS]
+=== Carrito de Compras (Total: $460000,00) ===
+ - Curso Java OOP Avanzado x2 -> Subtotal: $240000,00
+ - E-Book Arquitectura Software x3 -> Subtotal: $135000,00
+ - Soporte Ergonómico Laptop x1 -> Subtotal: $85000,00
+
+====================================================================
+ 3. TRATAMIENTO POLIMÓRFICO DE OBJETOS DERIVADOS                  
+====================================================================
+Procesando lista heterogénea de productos como objetos de la superclase Producto:
+  -> [PROCESADO POLIMÓRFICO] ID: 1 | Smartphone X Pro          | Precio: $1500000,00 | EnvioFisico: true
+  -> [PROCESADO POLIMÓRFICO] ID: 2 | Cafetera Express          | Precio: $450000,00 | EnvioFisico: true
+  -> [PROCESADO POLIMÓRFICO] ID: 3 | Curso Java OOP Avanzado   | Precio: $120000,00 | EnvioFisico: false
+  -> [PROCESADO POLIMÓRFICO] ID: 4 | E-Book Arquitectura Software | Precio: $45000,00 | EnvioFisico: false
+--------------------------------------------------------------------
+ Resumen Polimórfico -> Físicos: 2 | Digitales: 2 | Valor Inventario: $191835000,00
+--------------------------------------------------------------------
+
+====================================================================
+ 4. CHECKOUT Y FACTURACIÓN CON IMPUESTOS (ASIGNACIÓN 4)            
+====================================================================
+[PAGO] Procesando pago de $547400,00 vía Pasarela Externa (TARJETA_CREDITO)...
+[PAGO] Transacción aprobada exitosamente. ID de Transacción: TXN-5001
+[PEDIDO #1001] Confirmado y pagado con éxito. Total: $547400,00
+
+==========================================
+          DETALLE DE PEDIDO #1001           
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Fecha: 2026-09-15T22:51:06.292171100
+Estado: PAGADO
+Dirección: Av. El Dorado #68-90, Bogotá, Cundinamarca (110931) - Colombia
+Ítems Adquiridos:
+  • Curso Java OOP Avanzado (ID: 3) x2 @ $120000,00 = $240000,00
+  • E-Book Arquitectura Software (ID: 4) x3 @ $45000,00 = $135000,00
+  • Soporte Ergonómico Laptop (ID: 66279) x1 @ $85000,00 = $85000,00
+------------------------------------------
+ Subtotal:  $460000,00
+ IVA (19%): $87400,00
+ TOTAL:     $547400,00
+==========================================
+==========================================
+     REPORTE DE VENTAS COMPRAYA (ASIG. 3) 
+==========================================
+Admin Responsable: José Requeno (SUPERADMIN - GESTION_CATALOGO)
+Total Pedidos Procesados: 1
+Ingresos Totales Acumulados: $547400,00
+==========================================
+
+====================================================================
+  ¡PRUEBA DE POLIMORFISMO Y SOBRECARGA COMPLETADA EXITOSAMENTE!    
+====================================================================

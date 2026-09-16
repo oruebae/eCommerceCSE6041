@@ -1,13 +1,15 @@
 package com.compraya.model;
 
+import com.compraya.service.EcommerceService;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Clase Carrito (o CarritoDeCompras) que gestiona los productos seleccionados por el usuario
- * y mantiene el cálculo en tiempo real del total acumulado.
+ * Clase Carrito (o CarritoDeCompras) que gestiona los productos seleccionados.
+ * Aplica Sobrecarga de Métodos (Method Overloading) en agregarProducto y removerProducto.
  */
 public class Carrito {
     private int id;
@@ -16,7 +18,7 @@ public class Carrito {
     private LocalDateTime fechaCreacion;
 
     /**
-     * Constructor para inicializar el objeto Carrito.
+     * Constructor por defecto para inicializar el objeto Carrito.
      */
     public Carrito() {
         this.items = new ArrayList<>();
@@ -36,15 +38,26 @@ public class Carrito {
         this.fechaCreacion = LocalDateTime.now();
     }
 
-    // --- Métodos de Negocio Exigidos ---
+    // =========================================================================
+    // SOBRECARGA DE MÉTODOS (METHOD OVERLOADING) - agregarProducto
+    // =========================================================================
 
     /**
-     * Añade un producto al carrito con la cantidad especificada.
-     * Si el producto ya existía en el carrito, incrementa la cantidad existente.
+     * Variación 1 de Sobrecarga: Agrega 1 unidad por defecto a partir de un objeto Producto.
      * 
-     * @param producto Producto a añadir.
-     * @param cantidad Cantidad a adquirir.
-     * @return true si se pudo agregar (hay suficiente stock disponible), false en caso contrario.
+     * @param producto Objeto Producto.
+     * @return true si fue agregado exitosamente.
+     */
+    public boolean agregarProducto(Producto producto) {
+        return agregarProducto(producto, 1);
+    }
+
+    /**
+     * Variación 2 de Sobrecarga: Agrega una cantidad específica a partir de un objeto Producto.
+     * 
+     * @param producto Objeto Producto a agregar.
+     * @param cantidad Cantidad requerida.
+     * @return true si fue agregado exitosamente.
      */
     public boolean agregarProducto(Producto producto, int cantidad) {
         if (producto == null || cantidad <= 0) {
@@ -79,10 +92,63 @@ public class Carrito {
     }
 
     /**
-     * Remueve un producto del carrito por su ID de producto.
+     * Variación 3 de Sobrecarga: Agrega 1 unidad por defecto buscando un producto por su ID en el catálogo.
      * 
-     * @param productoId ID del producto a eliminar del carrito.
-     * @return true si se removió exitosamente, false si no se encontró en el carrito.
+     * @param productoId ID del producto en el catálogo.
+     * @param service    Servicio de eCommerce/Catálogo.
+     * @return true si el producto fue encontrado y agregado.
+     */
+    public boolean agregarProducto(int productoId, EcommerceService service) {
+        return agregarProducto(productoId, 1, service);
+    }
+
+    /**
+     * Variación 4 de Sobrecarga: Agrega la cantidad especificada buscando un producto por su ID en el catálogo.
+     * 
+     * @param productoId ID del producto.
+     * @param cantidad   Cantidad requerida.
+     * @param service    Servicio de eCommerce/Catálogo.
+     * @return true si fue encontrado y agregado.
+     */
+    public boolean agregarProducto(int productoId, int cantidad, EcommerceService service) {
+        if (service == null) {
+            System.out.println("Error: Servicio de catálogo no proporcionado.");
+            return false;
+        }
+        Producto p = service.buscarProductoPorId(productoId).orElse(null);
+        if (p == null) {
+            System.out.printf("Error: No se encontró ningún producto con ID %d en el catálogo.\n", productoId);
+            return false;
+        }
+        return agregarProducto(p, cantidad);
+    }
+
+    /**
+     * Variación 5 de Sobrecarga: Crea dinámicamente un producto rápido y lo agrega al carrito con la cantidad dada.
+     * 
+     * @param nombre    Nombre comercial.
+     * @param precio    Precio unitario.
+     * @param cantidad  Cantidad a adquirir.
+     * @param categoria Categoría asignada.
+     * @return true si el producto genérico fue creado e insertado.
+     */
+    public boolean agregarProducto(String nombre, double precio, int cantidad, Categoria categoria) {
+        int idTemp = (int) (System.currentTimeMillis() % 100000);
+        Producto prodGenerico = new Producto(idTemp, nombre, "Producto Rápido Generado", precio, cantidad + 10, categoria);
+        System.out.printf("[CARRITO - SOBRECARGA] Generando e insertando producto dinámico: '%s' ($%.2f) x%d\n",
+                nombre, precio, cantidad);
+        return agregarProducto(prodGenerico, cantidad);
+    }
+
+    // =========================================================================
+    // SOBRECARGA DE MÉTODOS (METHOD OVERLOADING) - removerProducto
+    // =========================================================================
+
+    /**
+     * Variación 1 de Sobrecarga: Remueve un producto del carrito por su ID.
+     * 
+     * @param productoId ID del producto.
+     * @return true si fue removido.
      */
     public boolean removerProducto(int productoId) {
         boolean removido = items.removeIf(item -> item.getProducto().getId() == productoId);
@@ -93,12 +159,18 @@ public class Carrito {
     }
 
     /**
-     * Modifica la cantidad asignada a un producto en el carrito.
+     * Variación 2 de Sobrecarga: Remueve un producto del carrito pasando el objeto Producto.
      * 
-     * @param productoId    ID del producto.
-     * @param nuevaCantidad Nueva cantidad requerida.
-     * @return true si se actualizó exitosamente.
+     * @param producto Objeto Producto a remover.
+     * @return true si fue removido.
      */
+    public boolean removerProducto(Producto producto) {
+        if (producto == null) return false;
+        return removerProducto(producto.getId());
+    }
+
+    // --- Otros Métodos de Carrito ---
+
     public boolean modificarCantidad(int productoId, int nuevaCantidad) {
         if (nuevaCantidad <= 0) {
             return removerProducto(productoId);
@@ -118,11 +190,6 @@ public class Carrito {
         return false;
     }
 
-    /**
-     * Recalcula el total del carrito sumando el subtotal de cada ítem en la lista.
-     * 
-     * @return El monto total acumulado en el carrito.
-     */
     public double calcularTotal() {
         this.total = 0.0;
         for (ItemCarrito item : items) {
@@ -131,9 +198,6 @@ public class Carrito {
         return this.total;
     }
 
-    /**
-     * Vacía todos los productos del carrito y reinicia el total a cero.
-     */
     public void vaciarCarrito() {
         items.clear();
         this.total = 0.0;

@@ -2,8 +2,7 @@ package com.compraya.model;
 
 /**
  * Subclase ProductoFisico que extiende de Producto (Herencia).
- * Especializa la funcionalidad para bienes tangibles que requieren dimensiones, peso
- * y cálculo de logística de despacho físico.
+ * Sobrescribe mostrarDetalle() para imprimir especificaciones de peso, dimensiones y fletes (Sobreescritura - Overriding).
  */
 public class ProductoFisico extends Producto {
     private double pesoKg;
@@ -24,6 +23,27 @@ public class ProductoFisico extends Producto {
         this.pesoKg = pesoKg;
         this.dimensiones = dimensiones;
         this.costoEnvioBase = costoEnvioBase;
+    }
+
+    /**
+     * Sobreescritura del método mostrarDetalle() para bienes físicos (Overriding).
+     */
+    @Override
+    public void mostrarDetalle() {
+        System.out.println("-------------------------------------------------------");
+        System.out.println(" 📦 FICHA TÉCNICA DE PRODUCTO FÍSICO                   ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("ID:            " + getId());
+        System.out.println("Nombre:        " + getNombre());
+        System.out.println("Descripción:   " + getDescripcion());
+        System.out.printf("Precio:        $%.2f\n", getPrecio());
+        System.out.println("Stock:         " + getStock() + " unidades");
+        System.out.println("Categoría:     " + (getCategoria() != null ? getCategoria().getNombre() : "N/A"));
+        System.out.printf("Peso Físico:   %.2f kg\n", pesoKg);
+        System.out.println("Dimensiones:   " + dimensiones);
+        System.out.printf("Flete Base:    $%.2f\n", costoEnvioBase);
+        System.out.printf("Flete Bogotá:  $%.2f\n", calcularCostoEnvio("Cundinamarca"));
+        System.out.println("Logística:     Requiere transporte terrestre/aéreo");
     }
 
     /**

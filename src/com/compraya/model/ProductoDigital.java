@@ -2,8 +2,7 @@ package com.compraya.model;
 
 /**
  * Subclase ProductoDigital que extiende de Producto (Herencia).
- * Especializa la funcionalidad para bienes intangibles (software, e-books, licencias, cursos)
- * que se entregan mediante descargas o licencias digitales sin requerir flete físico.
+ * Sobrescribe mostrarDetalle() para imprimir especificaciones de formato, tamaño, licenciamiento y entrega digital (Sobreescritura - Overriding).
  */
 public class ProductoDigital extends Producto {
     private String formatoArchivo; // Ej: "PDF", "ZIP", "MP4", "KEY"
@@ -29,6 +28,27 @@ public class ProductoDigital extends Producto {
     }
 
     /**
+     * Sobreescritura del método mostrarDetalle() para bienes digitales (Overriding).
+     */
+    @Override
+    public void mostrarDetalle() {
+        System.out.println("-------------------------------------------------------");
+        System.out.println(" 💾 FICHA TÉCNICA DE PRODUCTO DIGITAL                  ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("ID:            " + getId());
+        System.out.println("Nombre:        " + getNombre());
+        System.out.println("Descripción:   " + getDescripcion());
+        System.out.printf("Precio:        $%.2f\n", getPrecio());
+        System.out.println("Stock:         " + getStock() + " licencias disponibles");
+        System.out.println("Categoría:     " + (getCategoria() != null ? getCategoria().getNombre() : "N/A"));
+        System.out.println("Formato:       " + formatoArchivo);
+        System.out.printf("Tamaño MB:     %.1f MB\n", tamanoMB);
+        System.out.println("Licencia:      " + licencia);
+        System.out.println("URL Base:      " + urlDescarga);
+        System.out.println("Entrega:       Inmediata vía enlace dinámico con token");
+    }
+
+    /**
      * Genera y retorna un token único de descarga segura para el cliente.
      * 
      * @return URL de descarga personalizada con token.
@@ -46,7 +66,7 @@ public class ProductoDigital extends Producto {
 
     @Override
     public boolean requiereEnvioFisico() {
-        return false; // Los productos digitales no requieren envío físico por transportadora
+        return false;
     }
 
     // --- Getters y Setters ---
