@@ -1,0 +1,105 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 8          
+     Manejo de Excepciones Personalizadas y Pruebas Unitarias     
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+
+====================================================================
+    EJECUCIÓN DE SUITE DE PRUEBAS UNITARIAS - ASIGNACIÓN NO. 8     
+====================================================================
+
+--- [SUITE] Pruebas Unitarias para Producto ---
+   ✅ PASÓ: ID del producto correcto
+   ✅ PASÓ: Nombre del producto correcto
+   ✅ PASÓ: Precio del producto correcto
+   ✅ PASÓ: Stock inicial del producto correcto
+   ✅ PASÓ: Tipo de producto digital correcto
+   ✅ PASÓ: Debe lanzar StockInvalidoException si el stock asignado es negativo (Excepción capturada correctamente: StockInvalidoException)
+   ✅ PASÓ: Debe lanzar IllegalArgumentException si el precio es negativo (Excepción capturada correctamente: IllegalArgumentException)
+   ✅ PASÓ: Debe lanzar IllegalArgumentException si el nombre está en blanco (Excepción capturada correctamente: IllegalArgumentException)
+
+--- [SUITE] Pruebas Unitarias para Usuario ---
+   ✅ PASÓ: Nombre del cliente correcto
+   ✅ PASÓ: Email del cliente correcto
+   ✅ PASÓ: Nivel de acceso admin correcto
+   ✅ PASÓ: Debe lanzar IllegalArgumentException para un email sin formato válido (Excepción capturada correctamente: IllegalArgumentException)
+   ✅ PASÓ: Debe lanzar IllegalArgumentException si la contraseña tiene menos de 6 caracteres (Excepción capturada correctamente: IllegalArgumentException)
+
+--- [SUITE] Pruebas Unitarias para Carrito de Compras ---
+   ✅ PASÓ: El carrito recién creado debe estar vacío
+   ✅ PASÓ: El total de un carrito vacío debe ser 0.0
+   ✅ PASÓ: Cantidad de ítems agregada correctamente
+   ✅ PASÓ: Subtotal del carrito calculado correctamente ($300.000)
+   ✅ PASÓ: Debe lanzar InventarioInsuficienteException al intentar agregar 10 unidades teniendo solo stock 2 (Excepción capturada correctamente: InventarioInsuficienteException)
+   ✅ PASÓ: El carrito vuelve a estar vacío tras remover el único ítem
+   ✅ PASÓ: Debe lanzar CarritoVacioException al intentar remover un producto de un carrito vacío (Excepción capturada correctamente: CarritoVacioException)
+
+--- [SUITE] Pruebas Unitarias para Gestor de Inventario ---
+   ✅ PASÓ: Producto registrado exitosamente en catálogo
+   ✅ PASÓ: Stock registrado correctamente
+   ✅ PASÓ: Stock descontado correctamente de 8 a 5
+   ✅ PASÓ: Debe lanzar ProductoNoEncontradoException para ID inexistente (Excepción capturada correctamente: ProductoNoEncontradoException)
+   ✅ PASÓ: Debe lanzar InventarioInsuficienteException si se intenta descontar 10 cuando solo quedan 5 (Excepción capturada correctamente: InventarioInsuficienteException)
+   ✅ PASÓ: Debe lanzar StockInvalidoException si se asigna stock negativo (Excepción capturada correctamente: StockInvalidoException)
+
+--- [SUITE] Pruebas Unitarias para Pasarelas de Pago ---
+   ✅ PASÓ: Pago con tarjeta aprobado por dentro del límite de crédito
+   ✅ PASÓ: Debe lanzar PagoFallidoException cuando el monto supera el límite de crédito (Excepción capturada correctamente: PagoFallidoException)
+   ✅ PASÓ: Pago PayPal aprobado con saldo disponible
+   ✅ PASÓ: Debe lanzar PagoFallidoException cuando la cuenta PayPal no posee saldo suficiente (Excepción capturada correctamente: PagoFallidoException)
+   ✅ PASÓ: Debe lanzar PagoFallidoException si se intenta procesar un monto negativo (Excepción capturada correctamente: PagoFallidoException)
+
+====================================================================
+               RESUMEN DE RESULTADOS DE LAS PRUEBAS                
+====================================================================
+ Total de Pruebas Ejecutadas : 31
+ Pruebas Exitosas (PASÓ)     : 31
+ Pruebas Fallidas (FALLÓ)    : 0
+ Tasa de Éxito / Cobertura   : 100,00%
+====================================================================
+  🎉 ¡TODAS LAS PRUEBAS UNITARIAS PASARON EXITOSAMENTE (100%)!
+====================================================================
+
+====================================================================
+ 2. DEMOSTRACIÓN EN VIVO DE MANEJO Y RECUPERACIÓN DE EXCEPCIONES    
+====================================================================
+
+[ESCENARIO A] Intentando agregar producto inexistente (ID: 9999):
+   [RECUPERACIÓN GRACIOSA] Error de catálogo (ERR_PRODUCTO_NO_ENCONTRADO): No se encontró ningún producto registrado con el ID 9999
+   -> Sugerencia: Por favor verifique el código del producto en el catálogo.
+
+[ESCENARIO B] Intentando agregar 10 unidades de Smart TV (Stock disponible: 3):
+   [RECUPERACIÓN GRACIOSA] Error de stock (ERR_STOCK_INSUFICIENTE): Stock insuficiente para el producto ID 501. Solicitado: 10, Disponible: 3
+   -> Sugerencia: Solo hay 3 unidades disponibles. ¿Desea agregar las 3 restantes?
+
+[ESCENARIO C] Agregando 2 unidades de Smart TV y 1 de Curso:
+   [ÉXITO SEGURO] Se agregaron 2 unidad(es) de 'Smart TV OLED 55"' al carrito.
+   [ÉXITO SEGURO] Se agregaron 1 unidad(es) de 'Curso Testing & Clean Code' al carrito.
+
+[ESCENARIO D] Checkout con tarjeta sin cupo suficiente (Fallback a PayPal):
+
+--- [PROCESO DE CHECKOUT CON MANEJO DE EXCEPCIONES] ---
+   [PEDIDO #8001 CREADO] Total a pagar: $10827810,00 (Subtotal: $9099000,00, IVA 19%: $1728810,00)
+   [PASARELA PRINCIPAL] Intentando cobrar $10827810,00 con 'Tarjeta de Crédito/Débito'...
+   [FALLO EN PASARELA PRINCIPAL] Fallo al procesar el pago con 'Tarjeta de Crédito/Débito' por $10827810,00. Motivo: Límite de crédito excedido. Disponible: $1000000,00
+   [RECUPERACIÓN DE ERROR] Intentando cobro alternativo con pasarela de contingencia 'PayPal Global Checkout'...
+   [PASARELA SECUNDARIA] ¡Pago APROBADO exitosamente en contingencia!
+   🎉 [COMPRA COMPLETADA CON ÉXITO] Pedido #8001 estado: PAGADO
+
+[ESCENARIO E] Intentando checkout con carrito recién vaciado:
+
+--- [PROCESO DE CHECKOUT CON MANEJO DE EXCEPCIONES] ---
+   [EXCEPCIÓN CAPTURADA CORRECTAMENTE] [CarritoVacioException] Error (ERR_CARRITO_VACIO): No se puede procesar la compra o checkout porque el carrito de compras no contiene productos.
+
+[ESCENARIO F] Intento de actualización de inventario por parte de un Cliente:
+   [ACCESO RECHAZADO] [UsuarioNoAutorizadoException] Error (ERR_USUARIO_NO_AUTORIZADO): El usuario 'carlos@example.com' no está autorizado para realizar la operación 'Actualización directa de stock en inventario'
+
+[ESCENARIO G] Intentando la misma actualización con perfil Administrador:
+   [ADMIN OK] Stock del producto ID 501 actualizado a 100 por 'Ana Admin'
+
+====================================================================
+  ¡DEMOSTRACIÓN Y PRUEBAS DE ASIGNACIÓN 8 FINALIZADAS CON ÉXITO!    
+====================================================================
