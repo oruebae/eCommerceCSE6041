@@ -3,9 +3,8 @@ package com.compraya.model;
 import java.util.Objects;
 
 /**
- * Clase Producto que representa un artículo en el catálogo de CompraYa.
- * Contiene información de identificación, detalles, precio, stock disponible
- * y su categoría asociada.
+ * Clase base Producto que representa un artículo general en el catálogo de CompraYa.
+ * Sirve como superclase para la especialización mediante herencia en ProductoFisico y ProductoDigital.
  */
 public class Producto {
     private int id;
@@ -40,18 +39,38 @@ public class Producto {
         this.categoria = categoria;
     }
 
+    // --- Métodos Polimórficos / Especializables ---
+
+    /**
+     * Retorna una descripción detallada con los atributos específicos del tipo de producto.
+     * Método diseñado para ser sobrescrito por subclases (Polimorfismo).
+     * 
+     * @return String con detalles específicos del producto.
+     */
+    public String obtenerDetallesEspecificos() {
+        return "Producto General de Catálogo";
+    }
+
+    /**
+     * Indica si el producto requiere logística de envío físico.
+     * 
+     * @return true por defecto para productos generales.
+     */
+    public boolean requiereEnvioFisico() {
+        return true;
+    }
+
     // --- Métodos de Negocio / Modificación de Estado ---
 
     /**
      * Actualiza la cantidad disponible en el stock.
-     * Puede incrementar (valor positivo) o decrementar (valor negativo) el inventario.
      * 
      * @param cantidad Variación de stock.
      * @return true si la actualización fue exitosa, false si el resultado fuera un stock negativo.
      */
     public boolean actualizarStock(int cantidad) {
         if (this.stock + cantidad < 0) {
-            return false; // No hay suficiente stock disponible
+            return false;
         }
         this.stock += cantidad;
         return true;
@@ -140,7 +159,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return String.format("Producto[ID: %d | Nombre: %s | Precio: $%.2f | Stock: %d | Categ: %s]",
-                id, nombre, precio, stock, (categoria != null ? categoria.getNombre() : "Sin Categoria"));
+        return String.format("Producto[ID: %d | Nombre: %s | Precio: $%.2f | Stock: %d | Categ: %s | Tipo: %s]",
+                id, nombre, precio, stock, (categoria != null ? categoria.getNombre() : "Sin Categoria"), obtenerDetallesEspecificos());
     }
 }

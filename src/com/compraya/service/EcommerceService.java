@@ -8,8 +8,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Servicio principal que gestiona el catálogo de productos, registro de usuarios
- * y orquestación de operaciones de la plataforma CompraYa.
+ * Servicio principal que orquesta la plataforma CompraYa para la Asignación 3,
+ * incluyendo productos especializados (Físicos y Digitales) y perfiles de usuario.
  */
 public class EcommerceService {
     private List<Categoria> categorias;
@@ -33,22 +33,26 @@ public class EcommerceService {
         // Categorías iniciales
         Categoria elec = new Categoria(1, "Electrónica", "Dispositivos y gadgets tecnológicos");
         Categoria hogar = new Categoria(2, "Hogar", "Artículos para el hogar y cocina");
-        Categoria moda = new Categoria(3, "Moda", "Ropa, calzado y accesorios");
+        Categoria software = new Categoria(3, "Software y Libros Digitales", "Licencias y contenidos descargables");
         categorias.add(elec);
         categorias.add(hogar);
-        categorias.add(moda);
+        categorias.add(software);
 
-        // Productos de demostración
-        agregarProducto(new Producto(contadorProductoId++, "Smartphone X Pro", "Teléfono inteligente 128GB OLED", 1500000.0, 15, elec));
-        agregarProducto(new Producto(contadorProductoId++, "Audífonos Bluetooth", "Audífonos inalámbricos cancelación de ruido", 250000.0, 30, elec));
-        agregarProducto(new Producto(contadorProductoId++, "Cafetera Express", "Cafetera automática de presión 15 bares", 450000.0, 10, hogar));
-        agregarProducto(new Producto(contadorProductoId++, "Aspiradora Robot", "Aspiradora inteligente con mapeo láser", 890000.0, 8, hogar));
-        agregarProducto(new Producto(contadorProductoId++, "Chaqueta Impermeable", "Chaqueta térmica de alta resistencia", 180000.0, 25, moda));
-        agregarProducto(new Producto(contadorProductoId++, "Zapatillas Deportivas", "Calzado ligero para atletismo", 220000.0, 20, moda));
+        // --- PRODUCTOS FÍSICOS (Especialización de Producto) ---
+        agregarProducto(new ProductoFisico(contadorProductoId++, "Smartphone X Pro", "Teléfono 128GB OLED", 1500000.0, 15, elec, 0.45, "15x7x0.8 cm", 12000.0));
+        agregarProducto(new ProductoFisico(contadorProductoId++, "Cafetera Express", "Cafetera de presión 15 bares", 450000.0, 10, hogar, 4.2, "35x25x30 cm", 18000.0));
 
-        // Usuarios demo
+        // --- PRODUCTOS DIGITALES (Especialización de Producto) ---
+        agregarProducto(new ProductoDigital(contadorProductoId++, "Curso Java OOP Avanzado", "Masterclass interactiva POO 2026", 120000.0, 999, software, "MP4/ZIP", 2450.0, "https://cdn.compraya.com/cursos/java-oop", "LIC-JAVA-2026-BIU"));
+        agregarProducto(new ProductoDigital(contadorProductoId++, "E-Book Arquitectura Software", "Guía práctica de patrones de diseño", 45000.0, 999, software, "PDF/EPUB", 18.5, "https://cdn.compraya.com/ebooks/arch-design", "LIC-EBOOK-SINGLE"));
+
+        // --- USUARIOS DEMO (Cliente y Administrador) ---
         Cliente clienteDemo = new Cliente(contadorUsuarioId++, "Alberto López", "alberto.lopez@example.com", "pass1234");
-        Administrador adminDemo = new Administrador(contadorUsuarioId++, "José Requeno", "admin.jose@compraya.com", "admin2026", "SUPERADMIN");
+        clienteDemo.agregarPreferencia("Software y Libros Digitales");
+        clienteDemo.agregarPreferencia("Electrónica");
+
+        Administrador adminDemo = new Administrador(contadorUsuarioId++, "José Requeno", "admin.jose@compraya.com", "admin2026", "SUPERADMIN", "GESTION_CATALOGO");
+
         usuarios.add(clienteDemo);
         usuarios.add(adminDemo);
     }
@@ -84,7 +88,7 @@ public class EcommerceService {
     public Usuario registrarUsuario(String nombre, String email, String password, boolean esAdmin) {
         Usuario usuario;
         if (esAdmin) {
-            usuario = new Administrador(contadorUsuarioId++, nombre, email, password, "ADMINISTRADOR");
+            usuario = new Administrador(contadorUsuarioId++, nombre, email, password, "ADMINISTRADOR", "GENERAL");
         } else {
             usuario = new Cliente(contadorUsuarioId++, nombre, email, password);
         }

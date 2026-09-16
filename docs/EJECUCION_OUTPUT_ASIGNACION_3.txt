@@ -1,0 +1,96 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 3          
+        Especialización mediante Herencia de Clases en Java         
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+[CLIENTE Alberto López] Nueva preferencia agregada: Software y Libros Digitales
+[CLIENTE Alberto López] Nueva preferencia agregada: Electrónica
+
+====================================================================
+ 1. ESPECIALIZACIÓN DE PRODUCTO (ProductoFisico y ProductoDigital) 
+====================================================================
+[CATÁLOGO DIVERSISFICADO CON HERENCIA]
+  • Smartphone X Pro -> $1500000,00
+    └ Detalles Polimórficos: Físico [Peso: 0,45 kg | Dim: 15x7x0.8 cm | Flete Base: $12000,00]
+    └ [FÍSICO] Flete Bogotá: $12000,00 | Flete San Andrés: $27000,00
+
+  • Cafetera Express -> $450000,00
+    └ Detalles Polimórficos: Físico [Peso: 4,20 kg | Dim: 35x25x30 cm | Flete Base: $18000,00]
+    └ [FÍSICO] Flete Bogotá: $24600,00 | Flete San Andrés: $39600,00
+
+  • Curso Java OOP Avanzado -> $120000,00
+    └ Detalles Polimórficos: Digital [Formato: MP4/ZIP | Tamaño: 2450,0 MB | Licencia: LIC-JAVA-2026-BIU]
+    └ [DIGITAL] Enlace de descarga generado: https://cdn.compraya.com/cursos/java-oop?token=f0d56&licence=LIC-JAVA-2026-BIU
+
+  • E-Book Arquitectura Software -> $45000,00
+    └ Detalles Polimórficos: Digital [Formato: PDF/EPUB | Tamaño: 18,5 MB | Licencia: LIC-EBOOK-SINGLE]
+    └ [DIGITAL] Enlace de descarga generado: https://cdn.compraya.com/ebooks/arch-design?token=7a475&licence=LIC-EBOOK-SINGLE
+
+====================================================================
+ 2. ESPECIALIZACIÓN DE USUARIO (Cliente vs Administrador)          
+====================================================================
+[CLIENTE ESPECIALIZADO]
+  • Cliente[ID: 1 | Nombre: Alberto López | Email: alberto.lopez@example.com | Preferencias: [Software y Libros Digitales, Electrónica] | Compras: 0]
+
+[RECOMENDACIONES BASADAS EN PREFERENCIAS DEL CLIENTE]
+  -> Recomendación para Alberto López: Smartphone X Pro (Electrónica)
+  -> Recomendación para Alberto López: Curso Java OOP Avanzado (Software y Libros Digitales)
+  -> Recomendación para Alberto López: E-Book Arquitectura Software (Software y Libros Digitales)
+
+[ADMINISTRADOR ESPECIALIZADO - GESTIÓN DE PROMOCIONES]
+  • Administrador[ID: 2 | Nombre: José Requeno | NivelAcceso: SUPERADMIN | Dpto: GESTION_CATALOGO]
+[ADMIN José Requeno - GESTION_CATALOGO] Promoción aplicada a 'Curso Java OOP Avanzado': 15,0% de descuento. (Precio anterior: $120000,00 -> Nuevo: $102000,00)
+[ADMIN José Requeno] Stock actualizado para 'Smartphone X Pro': 20 unidades.
+
+====================================================================
+ 3. COMPRA MIXTA EN CARRITO (PRODUCTOS FÍSICOS + DIGITALES)        
+====================================================================
+[AÑADIENDO PRODUCTO FÍSICO Y DIGITAL AL CARRITO]
+=== Carrito de Compras (Total: $1602000,00) ===
+ - Smartphone X Pro x1 -> Subtotal: $1500000,00
+ - Curso Java OOP Avanzado x1 -> Subtotal: $102000,00
+
+[DIRECCIÓN REGISTRADA] Calle 100 #15-30, Bogotá, Cundinamarca (110221) - Colombia
+
+[PROCESANDO CHECKOUT]
+[PAGO] Procesando pago de $1906380,00 vía Pasarela Externa (PSE)...
+[PAGO] Transacción aprobada exitosamente. ID de Transacción: TXN-5001
+[PEDIDO #1001] Confirmado y pagado con éxito. Total: $1906380,00
+
+==========================================
+          DETALLE DE PEDIDO #1001           
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Fecha: 2026-09-15T22:39:52.308739600
+Estado: PAGADO
+Dirección: Calle 100 #15-30, Bogotá, Cundinamarca (110221) - Colombia
+Ítems Adquiridos:
+  • Smartphone X Pro (ID: 1) x1 @ $1500000,00 = $1500000,00
+  • Curso Java OOP Avanzado (ID: 3) x1 @ $102000,00 = $102000,00
+------------------------------------------
+ Subtotal:  $1602000,00
+ IVA (19%): $304380,00
+ TOTAL:     $1906380,00
+==========================================
+
+[ENTREGA Y LOGÍSTICA DIFERENCIADA EN EL PEDIDO]
+  ✓ Producto Digital 'Curso Java OOP Avanzado' entregado de inmediato -> URL: https://cdn.compraya.com/cursos/java-oop?token=dee14&licence=LIC-JAVA-2026-BIU
+  🚚 Producto Físico 'Smartphone X Pro' despachado a la transportadora hacia: Bogotá
+
+====================================================================
+ 4. REPORTE DE VENTAS GENERADO POR EL ADMINISTRADOR                 
+====================================================================
+==========================================
+     REPORTE DE VENTAS COMPRAYA (ASIG. 3) 
+==========================================
+Admin Responsable: José Requeno (SUPERADMIN - GESTION_CATALOGO)
+Total Pedidos Procesados: 1
+Ingresos Totales Acumulados: $1906380,00
+==========================================
+
+====================================================================
+  ¡PRUEBA DE HERENCIA Y ESPECIALIZACIÓN COMPLETADA CON ÉXITO!      
+====================================================================
