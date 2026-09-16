@@ -1,0 +1,128 @@
+====================================================================
+               PLATAFORMA E-COMMERCE "COMPRAYA"                     
+        Demostración de Requerimientos POO (Curso CSE6041)          
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Institución: Broward International University (BIU)
+====================================================================
+
+=======================================================
+  1. DEMOSTRACIÓN Y PRUEBA DE LA CLASE 'PRODUCTO'
+=======================================================
+[CREACIÓN] Objeto Producto inicializado exitosamente:
+   -> Producto[ID: 101 | Nombre: Laptop Gamer Ultra | Precio: $6500000,00 | Stock: 10 | Categ: Electrónica]
+
+[PROPIEDADES] Invocación de Getters:
+   - ID: 101
+   - Nombre: Laptop Gamer Ultra
+   - Descripción: Intel i9, 32GB RAM, RTX 4080
+   - Precio: $6500000,00
+   - Stock disponible: 10
+
+[MÉTODOS DE NEGOCIO]
+   * Aplicando 10% de descuento...
+   -> Nuevo Precio tras descuento: $5850000,00
+   * Actualizando stock (-2 unidades vendidas)...
+   -> Nuevo Stock en inventario: 8
+
+=======================================================
+  2. DEMOSTRACIÓN Y PRUEBA DE LA CLASE 'USUARIO'
+=======================================================
+[CREACIÓN] Objeto Usuario inicializado:
+   -> Usuario[ID: 201 | Nombre: Carlos Ramírez | Email: carlos.ramirez@mail.com | Activo: true]
+
+[AUTENTICACIÓN] Prueba de inicio de sesión:
+   - ¿Autenticación con clave correcta?: ÉXITO
+   - ¿Autenticación con clave errónea?:  FALLO (Esperado)
+
+[GESTIÓN DE PERFIL] Actualizando nombre y correo...
+   -> Perfil Actualizado: Carlos A. Ramírez (carlos.actualizado@mail.com)
+
+[HERENCIA] Creando Cliente y Administrador:
+   - Cliente[ID: 1 | Nombre: Alberto López | Email: alberto.lopez@example.com | Compras: 0]
+   - Administrador[ID: 2 | Nombre: José Requeno | NivelAcceso: SUPERADMIN]
+
+[DESTRUCTOR/LIMPIEZA LOGICA] Ejecutando destruirSesion():
+Destruyendo sesión activa para el usuario ID 201 (carlos.actualizado@mail.com)...
+   -> Estado activo tras destrucción: false
+
+=======================================================
+  3. DEMOSTRACIÓN Y PRUEBA DE LA CLASE 'CARRITO'
+=======================================================
+[ESTADO INICIAL]
+=== Carrito de Compras (Total: $0,00) ===
+ [El carrito está vacío]
+
+[AÑADIR PRODUCTOS]
+   * Agregando 2 Audífonos Bluetooth...
+   * Agregando 1 Cafetera Express...
+   * Agregando 1 Zapatillas Deportivas...
+
+[CARRITO TRAS ADICIONES]
+=== Carrito de Compras (Total: $1170000,00) ===
+ - Audífonos Bluetooth x2 -> Subtotal: $500000,00
+ - Cafetera Express x1 -> Subtotal: $450000,00
+ - Zapatillas Deportivas x1 -> Subtotal: $220000,00
+
+[MODIFICAR CANTIDAD]
+   * Modificando cantidad de Audífonos a 3...
+   -> Total recalculado: $1420000,00
+
+[REMOVER PRODUCTO]
+   * Removiendo Zapatillas Deportivas (ID 6)...
+   -> ¿Producto removido con éxito?: true
+
+[CARRITO ACTUALIZADO]
+=== Carrito de Compras (Total: $1200000,00) ===
+ - Audífonos Bluetooth x3 -> Subtotal: $750000,00
+ - Cafetera Express x1 -> Subtotal: $450000,00
+
+
+=======================================================
+  4. FLUJO COMPLETO: CHECKOUT, IMPUESTOS Y PAGO
+=======================================================
+[DIRECCIÓN DE ENVÍO] Carrera 7 #45-12, Bogotá, Cundinamarca (110111) - Colombia
+
+[PROCESANDO CHECKOUT Y PASARELA DE PAGO]
+[PAGO] Procesando pago de $1428000,00 vía Pasarela Externa (TARJETA_CREDITO)...
+[PAGO] Transacción aprobada exitosamente. ID de Transacción: TXN-5001
+[PEDIDO #1001] Confirmado y pagado con éxito. Total: $1428000,00
+
+[PEDIDO GENERADO EXITOSAMENTE]
+==========================================
+          DETALLE DE PEDIDO #1001           
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Fecha: 2026-09-15T22:15:22.049842400
+Estado: PAGADO
+Dirección: Carrera 7 #45-12, Bogotá, Cundinamarca (110111) - Colombia
+Ítems Adquiridos:
+  • Audífonos Bluetooth (ID: 2) x3 @ $250000,00 = $750000,00
+  • Cafetera Express (ID: 3) x1 @ $450000,00 = $450000,00
+------------------------------------------
+ Subtotal:  $1200000,00
+ IVA (19%): $228000,00
+ TOTAL:     $1428000,00
+==========================================
+
+[VERIFICACIÓN DE IMPACTO EN INVENTARIO Y CARRITO]
+   - Stock restante de Audífonos (Inicial: 30): 27
+   - Stock restante de Cafetera  (Inicial: 10): 9
+   - Estado del carrito del cliente: Vacío (Correcto)
+
+=======================================================
+  5. MÓDULO DE ADMINISTRACIÓN Y REPORTES DE VENTAS
+=======================================================
+[ADMIN José Requeno] Stock actualizado para 'Laptop Gamer Ultra': 25 unidades.
+==========================================
+         REPORTE DE VENTAS COMPRAYA       
+==========================================
+Generado por Admin: José Requeno (SUPERADMIN)
+Total de Pedidos Procesados: 1
+Ingresos Totales Acumulados: $1428000,00
+==========================================
+
+=======================================================
+  ¡TODAS LAS PRUEBAS Y REQUERIMIENTOS FUERON EJECUTADOS!
+=======================================================
