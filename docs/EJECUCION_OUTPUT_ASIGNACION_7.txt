@@ -1,0 +1,84 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 7          
+        Implementación de Patrones Singleton, Factory y Observer    
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+
+====================================================================
+ 1. DEMOSTRACIÓN DEL PATRÓN SINGLETON (ConfiguracionSistema)        
+====================================================================
+=======================================================
+ ⚙️ CONFIGURACIÓN GLOBAL DEL SISTEMA (SINGLETON)       
+=======================================================
+Plataforma:      CompraYa e-Commerce Platform
+Versión:         7.0.2026
+Moneda Base:     COP
+Tasa IVA:        19,00%
+URL BD:          jdbc:postgresql://db.compraya.internal:5432/compraya_prod
+Mantenimiento:   DESACTIVADO (Operativo)
+Máx Items Cart:  50
+Hash Instancia:  718231523
+=======================================================
+
+[VERIFICACIÓN SINGLETON]
+   - Hash de la referencia config1: 718231523
+   - Hash de la referencia config2: 718231523
+   -> ¿(config1 == config2) es EXACTAMENTE la misma instancia?: SI (Singleton Garantizado)
+
+====================================================================
+ 2. DEMOSTRACIÓN DEL PATRÓN FACTORY (FabricaEntidades)             
+====================================================================
+[FABRICA FACTORY] Instanciando ProductoFisico: 'Tablet Pro 11' ($1800000,00)
+[FABRICA FACTORY] Instanciando ProductoDigital: 'Audiobook Clean Code' ($65000,00)
+
+[PRODUCTOS CREADOS DESDE LA FÁBRICA]
+ProductoFisico[ID: 10 | Tablet Pro 11 | $1800000,00 | Stock: 8 | Peso: 0,65 kg]
+ProductoDigital[ID: 11 | Audiobook Clean Code | $65000,00 | Formato: MP3/M4B | Lic: LIC-AUDIO-2026]
+
+====================================================================
+ 3. DEMOSTRACIÓN DEL PATRÓN OBSERVER (Notificaciones de Eventos)   
+====================================================================
+[PATRÓN OBSERVER] Nuevo observador suscrito: NotificadorClienteEmail
+[PATRÓN OBSERVER] Nuevo observador suscrito: NotificadorModuloInventario
+[PATRÓN OBSERVER] Nuevo observador suscrito: NotificadorPanelUI
+[FABRICA FACTORY] Instanciando ProductoFisico: 'Smartphone X Pro' ($1500000,00)
+[FABRICA FACTORY] Instanciando ProductoDigital: 'Curso Java OOP Avanzado' ($120000,00)
+[FABRICA FACTORY] Instanciando Cliente: 'Alberto López' (alberto.lopez@example.com)
+[FABRICA FACTORY] Instanciando Administrador: 'José Requeno' (SUPERADMIN - TECNOLOGIA)
+=== Carrito Asignación 7 (Total: $1620000,00) ===
+ - Smartphone X Pro x1 -> Subtotal: $1500000,00
+ - Curso Java OOP Avanzado x1 -> Subtotal: $120000,00
+
+[REALIZANDO CHECKOUT - SE ACTIVARÁ LA NOTIFICACIÓN DEL OBSERVER]
+[PEDIDO #1001] Estado actualizado a: 'PAGADO'
+[PATRÓN OBSERVER] Disparando evento 'CAMBIO_ESTADO_PEDIDO' a 3 observadores...
+   📧 [OBSERVER - EMAIL CLIENTE] Enviando correo a 'Alberto López' (alberto.lopez@example.com): Su pedido #1001 ahora está en estado 'PAGADO'.
+   📦 [OBSERVER - MÓDULO INVENTARIO] Pedido #1001 PAGADO -> Reservando físicamente 2 ítems en la bodega y generando orden de empaque.
+   🖥️ [OBSERVER - PANEL ADMINISTRACIÓN UI] Evento recibido: 'CAMBIO_ESTADO_PEDIDO' -> Actualizando métricas del dashboard en vivo.
+
+==========================================
+     DETALLE DE PEDIDO #1001 (ASIG. 7)      
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Estado: PAGADO
+Dirección: Carrera 7 #71-21, Bogotá, Cundinamarca (110231) - Colombia
+Ítems Adquiridos:
+  • Smartphone X Pro (ID: 1) x1 @ $1500000,00 = $1500000,00
+  • Curso Java OOP Avanzado (ID: 2) x1 @ $120000,00 = $120000,00
+------------------------------------------
+ Subtotal:  $1620000,00
+ IVA (19%): $307800,00
+ TOTAL:     $1927800,00
+==========================================
+
+[DISPARANDO EVENTO ADICIONAL DE STOCK BAJO MEDIANTE OBSERVER]
+[PATRÓN OBSERVER] Disparando evento 'ALERTA_STOCK_BAJO' a 3 observadores...
+   ⚠️ [OBSERVER - MÓDULO INVENTARIO] Alerta de stock bajo recibida: Generando orden de reposición automática a proveedores.
+   🖥️ [OBSERVER - PANEL ADMINISTRACIÓN UI] Evento recibido: 'ALERTA_STOCK_BAJO' -> Actualizando métricas del dashboard en vivo.
+
+====================================================================
+  ¡DEMOSTRACIÓN DE PATRONES DE DISEÑO COMPLETADA EXITOSAMENTE!      
+====================================================================
