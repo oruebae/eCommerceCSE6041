@@ -1,0 +1,136 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 5          
+         Aplicación de Encapsulamiento Estricto y Abstracción       
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+[CLIENTE Alberto López] Nueva preferencia agregada: Software y Libros Digitales
+[CLIENTE Alberto López] Nueva preferencia agregada: Electrónica
+
+====================================================================
+ 1. ABSTRACCIÓN AVANZADA: CLASE BASE ABSTRACTA 'ITEM' E INTERFACES  
+====================================================================
+[CATÁLOGO PROCESADO MEDIANTE ABSTRACCIÓN DE ITEM]
+-------------------------------------------------------
+ 📦 FICHA TÉCNICA DE PRODUCTO FÍSICO (ITEM)            
+-------------------------------------------------------
+ID:            1
+Nombre:        Smartphone X Pro
+Descripción:   Teléfono 128GB OLED
+Precio:        $1500000,00
+Stock:         15 unidades
+Categoría:     Electrónica
+Peso Físico:   0,45 kg
+Dimensiones:   15x7x0.8 cm
+Flete Base:    $12000,00
+Flete Bogotá:  $12000,00
+   └ [INTERFACE Despachable] Peso: 0,45 kg | Flete Bogotá: $12000,00
+
+-------------------------------------------------------
+ 📦 FICHA TÉCNICA DE PRODUCTO FÍSICO (ITEM)            
+-------------------------------------------------------
+ID:            2
+Nombre:        Cafetera Express
+Descripción:   Cafetera de presión 15 bares
+Precio:        $450000,00
+Stock:         10 unidades
+Categoría:     Hogar
+Peso Físico:   4,20 kg
+Dimensiones:   35x25x30 cm
+Flete Base:    $18000,00
+Flete Bogotá:  $24600,00
+   └ [INTERFACE Despachable] Peso: 4,20 kg | Flete Bogotá: $24600,00
+
+-------------------------------------------------------
+ 💾 FICHA TÉCNICA DE PRODUCTO DIGITAL (ITEM)           
+-------------------------------------------------------
+ID:            3
+Nombre:        Curso Java OOP Avanzado
+Descripción:   Masterclass interactiva POO 2026
+Precio:        $120000,00
+Stock:         999 licencias disponibles
+Categoría:     Software y Libros Digitales
+Formato:       MP4/ZIP
+Tamaño MB:     2450,0 MB
+Licencia:      LIC-JAVA-2026-BIU
+Entrega:       Inmediata vía enlace seguro con token
+   └ [INTERFACE Licenciable] Licencia: LIC-JAVA-2026-BIU | Token: https://cdn.compraya.com/cursos/java-oop?token=49f27&licence=LIC-JAVA-2026-BIU
+
+-------------------------------------------------------
+ 💾 FICHA TÉCNICA DE PRODUCTO DIGITAL (ITEM)           
+-------------------------------------------------------
+ID:            4
+Nombre:        E-Book Arquitectura Software
+Descripción:   Guía práctica de patrones
+Precio:        $45000,00
+Stock:         999 licencias disponibles
+Categoría:     Software y Libros Digitales
+Formato:       PDF/EPUB
+Tamaño MB:     18,5 MB
+Licencia:      LIC-EBOOK-SINGLE
+Entrega:       Inmediata vía enlace seguro con token
+   └ [INTERFACE Licenciable] Licencia: LIC-EBOOK-SINGLE | Token: https://cdn.compraya.com/ebooks/arch-design?token=710d1&licence=LIC-EBOOK-SINGLE
+
+====================================================================
+ 2. ENCAPSULAMIENTO ESTRICTO Y VALIDACIÓN DE DATOS EN MUTADORES     
+====================================================================
+[PRUEBA 2.1] Asignación de precio y stock válidos:
+   ✓ Precio actualizado a: $1450000,00
+   ✓ Stock actualizado a: 25 unidades
+
+[PRUEBA 2.2 - CAPTURA DE EXCEPCIÓ] Asignación de precio negativo (-500.0):
+   ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] El precio ($-500,00) no puede ser negativo.
+
+[PRUEBA 2.3 - CAPTURA DE EXCEPCIÓ] Asignación de stock negativo (-10):
+   ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] El stock (-10) no puede ser negativo.
+
+[PRUEBA 2.4 - CAPTURA DE EXCEPCIÓ] Asignación de correo electrónico inválido ('correo-sin-arroba'):
+   ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] Formato de correo electrónico inválido: 'correo-sin-arroba'. Debe contener '@' y dominio válido.
+
+[PRUEBA 2.5 - CAPTURA DE EXCEPCIÓ] Asignación de contraseña débil ('123'):
+   ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] La contraseña debe tener al menos 6 caracteres de longitud.
+
+[PRUEBA 2.6] Asignación exitosa de credenciales válidas:
+   ✓ Nombre:  Carlos Alberto López
+   ✓ Email:   carlos.lopez.2026@empresa.com
+   ✓ Estado:  Usuario encapsulado y validado correctamente
+
+====================================================================
+ 3. OPERACIÓN DE CARRITO ENCAPSULADO Y CHECKOUT (ASIGNACIÓN 5)     
+====================================================================
+=== Carrito de Compras Encapsulado (Total: $1690000,00) ===
+ - Smartphone X Pro x1 -> Subtotal: $1450000,00
+ - Curso Java OOP Avanzado x2 -> Subtotal: $240000,00
+
+[PAGO ENCAPSULADO] Procesando pago de $2011100,00 vía Pasarela (TARJETA_CREDITO)...
+[PAGO ENCAPSULADO] Transacción aprobada. ID TXN: TXN-5001
+[PEDIDO #1001] Confirmado y pagado con éxito. Total: $2011100,00
+
+==========================================
+     DETALLE DE PEDIDO #1001 (ASIG. 5)      
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Fecha: 2026-09-15T23:23:02.927249500
+Estado: PAGADO
+Dirección: Calle 127 #19-45, Bogotá, Cundinamarca (110121) - Colombia
+Ítems Adquiridos:
+  • Smartphone X Pro (ID: 1) x1 @ $1450000,00 = $1450000,00
+  • Curso Java OOP Avanzado (ID: 3) x2 @ $120000,00 = $240000,00
+------------------------------------------
+ Subtotal:  $1690000,00
+ IVA (19%): $321100,00
+ TOTAL:     $2011100,00
+==========================================
+==========================================
+     REPORTE DE VENTAS COMPRAYA (ASIG. 5) 
+==========================================
+Admin Responsable: José Requeno (SUPERADMIN - GESTION_CATALOGO)
+Total Pedidos Procesados: 1
+Ingresos Totales Acumulados: $2011100,00
+==========================================
+
+====================================================================
+  ¡PRUEBA DE ENCAPSULAMIENTO Y ABSTRACCIÓN COMPLETADA CON ÉXITO!   
+====================================================================
