@@ -1,0 +1,85 @@
+====================================================================
+          PLATAFORMA E-COMMERCE "COMPRAYA" - ASIGNACIÓN 6          
+       Implementación de Interfaces y Clases Abstractas en Java     
+====================================================================
+Estudiante: Alberto Alfonso López Pereira
+Docente:    Dr. José Ignacio Requeno Jarabo
+Curso:      CSE6041 – Object-Oriented Programming (BIU)
+====================================================================
+[INVENTARIO FÍSICO] Producto 'Smartphone X Pro' registrado en Pasillo-2 (Estante 2) con stock: 15 unidades.
+[INVENTARIO FÍSICO] Producto 'Cafetera Express' registrado en Pasillo-3 (Estante 3) con stock: 10 unidades.
+[INVENTARIO DIGITAL] Licencia digital 'Curso Java OOP Avanzado' sincronizada en nodo CDN cdn-node-1.compraya.com (999 licencias).
+[INVENTARIO DIGITAL] Licencia digital 'E-Book Arquitectura Software' sincronizada en nodo CDN cdn-node-2.compraya.com (999 licencias).
+
+====================================================================
+ 1. GESTIÓN ABSTRACTA DE INVENTARIOS (GestorInventario)             
+====================================================================
+[INVENTARIO FÍSICO BODEGA]
+[INVENTARIO FÍSICO] Stock físico actualizado para 'Smartphone X Pro': 20 unidades en bodega.
+=======================================================
+ 📦 REPORTE BODEGA DE INVENTARIO FÍSICO (COMPRAYA)     
+=======================================================
+Tipo: INVENTARIO_FISICO_BODEGA | Artículos: 2
+  • ID 1 | Smartphone X Pro       | Stock: 20   | Ubicación: Pasillo-2 (Estante 2) | Peso: 0,45 kg
+  • ID 2 | Cafetera Express       | Stock: 10   | Ubicación: Pasillo-3 (Estante 3) | Peso: 4,20 kg
+=======================================================
+
+[INVENTARIO DIGITAL LICENCIAS NUBE]
+[INVENTARIO DIGITAL] Cupo de licencias actualizado para 'Curso Java OOP Avanzado': 1500 disponibles en nube.
+=======================================================
+ 💾 REPORTE INVENTARIO DIGITAL Y LICENCIAS (COMPRAYA)  
+=======================================================
+Tipo: INVENTARIO_DIGITAL_NUBE_CDN | Licencias Registradas: 2
+  • ID 3 | Curso Java OOP Avanzado | Licencias: 1500 | Nodo CDN: cdn-node-1.compraya.com | Formato: MP4/ZIP (2450,0 MB)
+  • ID 4 | E-Book Arquitectura Software | Licencias: 999  | Nodo CDN: cdn-node-2.compraya.com | Formato: PDF/EPUB (18,5 MB)
+=======================================================
+
+====================================================================
+ 2. PROCESOS DE PAGO POLIMÓRFICOS MEDIANTE LA INTERFAZ ProcesoPago  
+====================================================================
+[PRUEBA PASARELA 1: INTERFAZ ProcesoPago -> PagoTarjeta]
+[PAGO TARJETA - VISA] Conectando con pasarela bancaria. Solicitud $150000,00 para ref 'REF-TEST-001' con tarjeta **** **** **** 5566 (Alberto López)...
+[PAGO TARJETA - VISA] Verificando código CVC y autorización bancaria para TXN: TXN-CARD-991...
+[PAGO TARJETA - VISA] ¡Fondos capturados exitosamente! TXN: TXN-CARD-991 por $150000,00
+
+[PRUEBA PASARELA 2: INTERFAZ ProcesoPago -> PagoPayPal]
+[PAGO PAYPAL] Redirigiendo a API REST PayPal OAuth2. Solicitante: 'alberto.lopez@paypal.com' | Monto: $85000,00 | Ref: 'REF-TEST-002'...
+[PAGO PAYPAL] Validando token de autorización PayPal (PayerID) para TXN: TXN-PAYPAL-882...
+[PAGO PAYPAL] ¡Pago verificado y transferido desde cuenta PayPal 'alberto.lopez@paypal.com'! TXN: TXN-PAYPAL-882 por $85000,00
+
+[PRUEBA PASARELA 3: INTERFAZ ProcesoPago -> PagoPSE]
+[PAGO PSE] Conectando con portal bancario Bancolombia (PERSONA_NATURAL - CC/NIT: 1018293847) por $220000,00 | Ref: 'REF-TEST-003'...
+[PAGO PSE] Verificando débito inmediato en cuenta del banco Bancolombia para TXN: TXN-PSE-773...
+[PAGO PSE] ¡Débito bancario en línea PSE confirmado desde Bancolombia! TXN: TXN-PSE-773 por $220000,00
+
+====================================================================
+ 3. COMPRA EN CARRITO Y CHECKOUT CON PASARELA POLIMÓRFICA           
+====================================================================
+=== Carrito Asignación 6 (Total: $1620000,00) ===
+ - Smartphone X Pro x1 -> Subtotal: $1500000,00
+ - Curso Java OOP Avanzado x1 -> Subtotal: $120000,00
+
+[EJECUTANDO CHECKOUT USANDO INTERFAZ ProcesoPago (PagoPSE)]
+[PAGO PSE] Conectando con portal bancario Bancolombia (PERSONA_NATURAL - CC/NIT: 1018293847) por $1927800,00 | Ref: 'PED-1001'...
+[PAGO PSE] Verificando débito inmediato en cuenta del banco Bancolombia para TXN: TXN-1789551856348...
+[PAGO PSE] ¡Débito bancario en línea PSE confirmado desde Bancolombia! TXN: TXN-1789551856348 por $1927800,00
+[PEDIDO #1001] ¡Pago completado mediante PSE Débito Bancario en Línea (Bancolombia)! Total: $1927800,00
+
+==========================================
+     DETALLE DE PEDIDO #1001 (ASIG. 6)      
+==========================================
+Cliente: Alberto López (alberto.lopez@example.com)
+Estado: PAGADO | Método: PSE Débito Bancario en Línea (Bancolombia)
+Dirección: Carrera 15 #93-60, Bogotá, Cundinamarca (110221) - Colombia
+Ítems Adquiridos:
+  • Smartphone X Pro (ID: 1) x1 @ $1500000,00 = $1500000,00
+  • Curso Java OOP Avanzado (ID: 3) x1 @ $120000,00 = $120000,00
+------------------------------------------
+ Subtotal:  $1620000,00
+ IVA (19%): $307800,00
+ TOTAL:     $1927800,00
+==========================================
+
+====================================================================
+  ¡DEMOSTRACIÓN DE LA ASIGNACIÓN NO. 6 COMPLETADA EXITOSAMENTE!    
+====================================================================
