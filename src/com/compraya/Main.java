@@ -92,9 +92,12 @@ public class Main {
         System.out.println(carrito);
 
         List<Producto> catalogo = service.getProductos();
-        Producto pAudifonos = catalogo.get(1); // Audífonos ($250,000)
-        Producto pCafetera  = catalogo.get(2); // Cafetera ($450,000)
-        Producto pZapatillas= catalogo.get(5); // Zapatillas ($220,000)
+        Producto pAudifonos = service.buscarProductosPorNombre("Audífonos").stream().findFirst()
+                .orElseGet(() -> catalogo.size() > 1 ? catalogo.get(1) : catalogo.get(0));
+        Producto pCafetera  = service.buscarProductosPorNombre("Cafetera").stream().findFirst()
+                .orElseGet(() -> catalogo.size() > 2 ? catalogo.get(2) : catalogo.get(0));
+        Producto pZapatillas= service.buscarProductosPorNombre("Zapatillas").stream().findFirst()
+                .orElseGet(() -> catalogo.size() > 5 ? catalogo.get(5) : catalogo.get(catalogo.size() - 1));
 
         System.out.println("[AÑADIR PRODUCTOS]");
         System.out.println("   * Agregando 2 Audífonos Bluetooth...");

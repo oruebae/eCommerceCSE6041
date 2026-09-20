@@ -49,17 +49,18 @@ public class MainAsignacion4 {
         System.out.println("   -> ¿Agregado 1 unidad de '" + pFisico1.getNombre() + "'?: " + v1);
 
         System.out.println("\n[VARIACIÓN 2 - Overloading] agregarProducto(Producto p, int cantidad)");
-        Producto pDigital1 = catalogo.get(2); // Curso Java OOP
+        Producto pDigital1 = service.buscarProductosPorNombre("Curso Java").stream().findFirst()
+                .orElseGet(() -> catalogo.stream().filter(p -> p instanceof ProductoDigital).findFirst().orElse(catalogo.get(0)));
         boolean v2 = carrito.agregarProducto(pDigital1, 2); // Agrega 2 unidades explícitas
         System.out.println("   -> ¿Agregadas 2 unidades de '" + pDigital1.getNombre() + "'?: " + v2);
 
         System.out.println("\n[VARIACIÓN 3 - Overloading] agregarProducto(int productoId, EcommerceService service)");
-        boolean v3 = carrito.agregarProducto(2, service); // Búsqueda por ID 2 (Cafetera) -> 1 unidad por defecto
-        System.out.println("   -> ¿Agregada 1 unidad por ID 2 (Cafetera Express)?: " + v3);
+        boolean v3 = carrito.agregarProducto(3, service); // Búsqueda por ID 3 (Cafetera Express) -> 1 unidad por defecto
+        System.out.println("   -> ¿Agregada 1 unidad por ID 3 (Cafetera Express)?: " + v3);
 
         System.out.println("\n[VARIACIÓN 4 - Overloading] agregarProducto(int productoId, int cantidad, EcommerceService service)");
-        boolean v4 = carrito.agregarProducto(4, 3, service); // Búsqueda por ID 4 (E-Book) -> 3 unidades
-        System.out.println("   -> ¿Agregadas 3 unidades por ID 4 (E-Book)?: " + v4);
+        boolean v4 = carrito.agregarProducto(5, 3, service); // Búsqueda por ID 5 (E-Book) -> 3 unidades
+        System.out.println("   -> ¿Agregadas 3 unidades por ID 5 (E-Book)?: " + v4);
 
         System.out.println("\n[VARIACIÓN 5 - Overloading] agregarProducto(String nombre, double precio, int cantidad, Categoria cat)");
         Categoria catModa = new Categoria(4, "Accesorios", "Artículos genéricos");
@@ -71,7 +72,7 @@ public class MainAsignacion4 {
 
         System.out.println("[DEMOSTRACIÓN SOBRECARGA - removerProducto]");
         System.out.println("   * Removiendo por ID de producto (removerProducto(int id)...)");
-        carrito.removerProducto(2); // Remueve Cafetera por ID
+        carrito.removerProducto(3); // Remueve Cafetera por ID
 
         System.out.println("   * Removiendo pasando objeto Producto (removerProducto(Producto p)...)");
         carrito.removerProducto(pFisico1); // Remueve Smartphone pasando el objeto

@@ -79,13 +79,13 @@ Para correr la suite completa de pruebas unitarias y los escenarios de excepció
 
 ```powershell
 # En Windows PowerShell / CMD:
-java -cp bin com.compraya.asignacion8.main.MainAsignacion8
+java -cp bin com.compraya.asignacion8.MainAsignacion8
 ```
 
 O con la ruta directa a `java.exe`:
 
 ```powershell
-& "C:\Program Files\Android\Android Studio\jbr\bin\java.exe" -cp bin com.compraya.asignacion8.main.MainAsignacion8
+& "C:\Program Files\Android\Android Studio\jbr\bin\java.exe" -cp bin com.compraya.asignacion8.MainAsignacion8
 ```
 
 ---
@@ -96,4 +96,4 @@ Al ejecutar la aplicación, observará:
 1. **Paso 1**: Ejecución automatizada de 31 pruebas unitarias con un 100% de tasa de éxito.
 2. **Paso 2**: Demostración interactiva de captura de excepciones (`ProductoNoEncontradoException`, `InventarioInsuficienteException`, `PagoFallidoException` con pasarela de contingencia, `CarritoVacioException` y `UsuarioNoAutorizadoException`).
 
-La salida completa generada se encuentra almacenada en [`docs/EJECUCION_OUTPUT_ASIGNACION_8.txt`](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/EJECUCION_OUTPUT_ASIGNACION_8.txt).
+La salida completa generada se encuentra almacenada en [`docs/EJECUCION_OUTPUT_ASIGNACION_8.txt`](EJECUCION_OUTPUT_ASIGNACION_8.txt).

@@ -377,8 +377,8 @@ java -cp bin com.compraya.Main
 
 ## 📄 Documentación Adicional
 
-- [Documentación de Arquitectura POO (RF/RNF)](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/DOCS_ARQUITECTURA_OOP.md)
-- [Guía Detallada de Ejecución y Publicación en GitHub](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/GUIA_EJECUCION.md)
+- [Documentación de Arquitectura POO (RF/RNF)](docs/DOCS_ARQUITECTURA_OOP.md)
+- [Guía Detallada de Ejecución y Publicación en GitHub](docs/GUIA_EJECUCION.md)
 
 ---
 © 2026 **Alberto Alfonso López Pereira** - Broward International University. Todos los derechos reservados.

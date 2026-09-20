@@ -87,13 +87,12 @@ Al ejecutar la aplicación, observará la demostración interactiva de los 3 pat
    - Transiciones del estado del pedido (`CREADO` -> `EN_PROCESO` -> `ENVIADO` -> `ENTREGADO`).
    - Notificación de alerta por bajo stock cuando se actualizan existencias por debajo del umbral configurado.
 
-La salida generada coincidirá con la documentada en [`docs/EJECUCION_OUTPUT_ASIGNACION_7.txt`](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/EJECUCION_OUTPUT_ASIGNACION_7.txt).
+La salida generada coincidirá con la documentada en [`docs/EJECUCION_OUTPUT_ASIGNACION_7.txt`](EJECUCION_OUTPUT_ASIGNACION_7.txt).
 
 ---
 
 ## 📝 Documentación Completa
 
 Para conocer en detalle el diseño de arquitectura y diagramas UML de la Asignación 7, consulte:
-- [README_ASIGNACION_7.md](file:///c:/ProyectosBIU/eCommerceCSE6041/README_ASIGNACION_7.md)
-- [readme_asignacion_7.md](file:///c:/ProyectosBIU/eCommerceCSE6041/readme_asignacion_7.md)
-- [DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md)
+- [README_ASIGNACION_7.md](../README_ASIGNACION_7.md)
+- [DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md](DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md)

@@ -65,7 +65,8 @@ public class MainAsignacion3 {
         System.out.println("\n[ADMINISTRADOR ESPECIALIZADO - GESTIÓN DE PROMOCIONES]");
         System.out.println("  • " + admin);
 
-        Producto prodCurso = catalogo.get(2); // Curso Java OOP
+        Producto prodCurso = service.buscarProductosPorNombre("Curso Java").stream().findFirst()
+                .orElseGet(() -> catalogo.stream().filter(p -> p instanceof ProductoDigital).findFirst().orElse(catalogo.get(0)));
         admin.establecerPromocion(prodCurso, 15.0); // 15% Descuento por el Admin
         admin.gestionarInventario(catalogo.get(0), 20); // Actualiza stock del Smartphone
 
@@ -80,7 +81,7 @@ public class MainAsignacion3 {
         Carrito cart = cliente.getCarrito();
 
         ProductoFisico pFisico = (ProductoFisico) catalogo.get(0);
-        ProductoDigital pDigital = (ProductoDigital) catalogo.get(2);
+        ProductoDigital pDigital = (ProductoDigital) prodCurso;
 
         System.out.println("[AÑADIENDO PRODUCTO FÍSICO Y DIGITAL AL CARRITO]");
         cart.agregarProducto(pFisico, 1);

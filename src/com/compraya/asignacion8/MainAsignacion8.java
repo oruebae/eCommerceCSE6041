@@ -1,4 +1,4 @@
-package com.compraya.asignacion8.main;
+package com.compraya.asignacion8;
 
 import com.compraya.asignacion8.exception.*;
 import com.compraya.asignacion8.model.*;

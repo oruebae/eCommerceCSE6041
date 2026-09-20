@@ -167,7 +167,7 @@ La batería de pruebas automatizadas ejecuta **31 test cases** cubriendo tanto f
 
 ## 📂 Archivos de Documentación Relacionados
 
-- **[README_ASIGNACION_8.md](file:///c:/ProyectosBIU/eCommerceCSE6041/README_ASIGNACION_8.md)**: Documento idéntico principal de la asignación.
-- **[DOCS_ARQUITECTURA_OOP_ASIGNACION_8.md](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_8.md)**: Documentación teórica avanzada de manejo de excepciones y pruebas.
-- **[GUIA_EJECUCION_ASIGNACION_8.md](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/GUIA_EJECUCION_ASIGNACION_8.md)**: Guía paso a paso para compilar y ejecutar en consola.
-- **[EJECUCION_OUTPUT_ASIGNACION_8.txt](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/EJECUCION_OUTPUT_ASIGNACION_8.txt)**: Log en texto plano de la corrida exitosa de la suite.
+- **[README_ASIGNACION_8.md](README_ASIGNACION_8.md)**: Documento idéntico principal de la asignación.
+- **[DOCS_ARQUITECTURA_OOP_ASIGNACION_8.md](docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_8.md)**: Documentación teórica avanzada de manejo de excepciones y pruebas.
+- **[GUIA_EJECUCION_ASIGNACION_8.md](docs/GUIA_EJECUCION_ASIGNACION_8.md)**: Guía paso a paso para compilar y ejecutar en consola.
+- **[EJECUCION_OUTPUT_ASIGNACION_8.txt](docs/EJECUCION_OUTPUT_ASIGNACION_8.txt)**: Log en texto plano de la corrida exitosa de la suite.

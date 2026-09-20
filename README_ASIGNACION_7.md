@@ -237,9 +237,9 @@ java -cp bin com.compraya.asignacion7.MainAsignacion7
 
 ## 📄 Archivos de Documentación Asignación 7
 
-- [Documentación Técnica de Patrones GoF](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md)
-- [Guía de Compilación y Publicación GitHub](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/GUIA_EJECUCION_ASIGNACION_7.md)
-- [Log de Consola de la Asignación 7](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/EJECUCION_OUTPUT_ASIGNACION_7.txt)
+- [Documentación Técnica de Patrones GoF](docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_7.md)
+- [Guía de Compilación y Publicación GitHub](docs/GUIA_EJECUCION_ASIGNACION_7.md)
+- [Log de Consola de la Asignación 7](docs/EJECUCION_OUTPUT_ASIGNACION_7.txt)
 
 ---
 © 2026 **Alberto Alfonso López Pereira** - Broward International University.

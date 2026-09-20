@@ -40,11 +40,15 @@ public class EcommerceService {
 
         // --- PRODUCTOS FÍSICOS (Especialización de Producto) ---
         agregarProducto(new ProductoFisico(contadorProductoId++, "Smartphone X Pro", "Teléfono 128GB OLED", 1500000.0, 15, elec, 0.45, "15x7x0.8 cm", 12000.0));
+        agregarProducto(new ProductoFisico(contadorProductoId++, "Audífonos Bluetooth", "Audífonos inalámbricos cancelación de ruido", 250000.0, 30, elec, 0.25, "18x15x5 cm", 8000.0));
         agregarProducto(new ProductoFisico(contadorProductoId++, "Cafetera Express", "Cafetera de presión 15 bares", 450000.0, 10, hogar, 4.2, "35x25x30 cm", 18000.0));
 
         // --- PRODUCTOS DIGITALES (Especialización de Producto) ---
         agregarProducto(new ProductoDigital(contadorProductoId++, "Curso Java OOP Avanzado", "Masterclass interactiva POO 2026", 120000.0, 999, software, "MP4/ZIP", 2450.0, "https://cdn.compraya.com/cursos/java-oop", "LIC-JAVA-2026-BIU"));
         agregarProducto(new ProductoDigital(contadorProductoId++, "E-Book Arquitectura Software", "Guía práctica de patrones de diseño", 45000.0, 999, software, "PDF/EPUB", 18.5, "https://cdn.compraya.com/ebooks/arch-design", "LIC-EBOOK-SINGLE"));
+
+        // --- PRODUCTO FÍSICO ADICIONAL ---
+        agregarProducto(new ProductoFisico(contadorProductoId++, "Zapatillas Deportivas", "Zapatillas para running ergonomicas", 220000.0, 15, hogar, 0.80, "30x20x12 cm", 10000.0));
 
         // --- USUARIOS DEMO (Cliente y Administrador) ---
         Cliente clienteDemo = new Cliente(contadorUsuarioId++, "Alberto López", "alberto.lopez@example.com", "pass1234");

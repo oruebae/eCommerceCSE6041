@@ -80,16 +80,16 @@ Entrega:       Inmediata vía enlace seguro con token
    ✓ Precio actualizado a: $1450000,00
    ✓ Stock actualizado a: 25 unidades
 
-[PRUEBA 2.2 - CAPTURA DE EXCEPCIÓ] Asignación de precio negativo (-500.0):
+[PRUEBA 2.2 - CAPTURA DE EXCEPCIÓN] Asignación de precio negativo (-500.0):
    ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] El precio ($-500,00) no puede ser negativo.
 
-[PRUEBA 2.3 - CAPTURA DE EXCEPCIÓ] Asignación de stock negativo (-10):
+[PRUEBA 2.3 - CAPTURA DE EXCEPCIÓN] Asignación de stock negativo (-10):
    ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] El stock (-10) no puede ser negativo.
 
-[PRUEBA 2.4 - CAPTURA DE EXCEPCIÓ] Asignación de correo electrónico inválido ('correo-sin-arroba'):
+[PRUEBA 2.4 - CAPTURA DE EXCEPCIÓN] Asignación de correo electrónico inválido ('correo-sin-arroba'):
    ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] Formato de correo electrónico inválido: 'correo-sin-arroba'. Debe contener '@' y dominio válido.
 
-[PRUEBA 2.5 - CAPTURA DE EXCEPCIÓ] Asignación de contraseña débil ('123'):
+[PRUEBA 2.5 - CAPTURA DE EXCEPCIÓN] Asignación de contraseña débil ('123'):
    ⚠️ Excepción capturada exitosamente: [VALIDACIÓN ENCAPSULADA] La contraseña debe tener al menos 6 caracteres de longitud.
 
 [PRUEBA 2.6] Asignación exitosa de credenciales válidas:

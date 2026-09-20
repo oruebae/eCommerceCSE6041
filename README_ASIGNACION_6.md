@@ -284,9 +284,9 @@ java -cp bin com.compraya.asignacion6.MainAsignacion6
 
 ## 📄 Archivos de Documentación Asignación 6
 
-- [Documentación Técnica de Interfaces y Clases Abstractas](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_6.md)
-- [Guía de Compilación y Publicación GitHub](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/GUIA_EJECUCION_ASIGNACION_6.md)
-- [Log de Consola de la Asignación 6](file:///c:/ProyectosBIU/eCommerceCSE6041/docs/EJECUCION_OUTPUT_ASIGNACION_6.txt)
+- [Documentación Técnica de Interfaces y Clases Abstractas](docs/DOCS_ARQUITECTURA_OOP_ASIGNACION_6.md)
+- [Guía de Compilación y Publicación GitHub](docs/GUIA_EJECUCION_ASIGNACION_6.md)
+- [Log de Consola de la Asignación 6](docs/EJECUCION_OUTPUT_ASIGNACION_6.txt)
 
 ---
 © 2026 **Alberto Alfonso López Pereira** - Broward International University.
